@@ -1,0 +1,17 @@
+.book-list-item {
+    border: 1px solid grey;
+    border-radius: 1.6rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 2.4rem;
+
+    &__cover {
+        img {
+            width: 12rem;
+        }
+    }
+
+    &__text {
+    }
+}

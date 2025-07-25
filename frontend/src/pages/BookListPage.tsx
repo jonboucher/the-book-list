@@ -1,5 +1,8 @@
+import { bookData } from "../../../backend/data/mockBookList";
+import BookList from "../components/BookList/BookList";
+
 const BookListPage = () => {
-    return <div>Book List Page</div>;
+    return <BookList books={bookData} />;
 };
 
 export default BookListPage;
