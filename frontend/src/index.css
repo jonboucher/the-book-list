@@ -1,7 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+
 :root {
     font-size: 10px;
 }
 
 body {
-    font-size: 1.6rem;
+    background-color: rgb(3, 6, 15);
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+p {
+    color: rgb(155, 168, 199);
+}
+
+h1,
+h2,
+h3 {
+    color: white;
 }

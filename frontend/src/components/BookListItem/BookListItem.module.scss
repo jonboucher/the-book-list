@@ -1,17 +1,41 @@
 .book-list-item {
-    border: 1px solid grey;
-    border-radius: 1.6rem;
+    background-color: rgb(9, 17, 36);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 1.4rem;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 3px 8px;
     display: flex;
     flex-direction: row;
-    gap: 2rem;
-    padding: 2.4rem;
+
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+    }
 
     &__cover {
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 1.6rem 0 0 1.6rem;
+
         img {
-            width: 12rem;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            border-radius: 0.5rem;
+            margin: 4rem;
+            width: 16rem;
         }
     }
 
     &__text {
+        padding: 2.4rem 4rem;
+        padding-right: 10rem;
+
+        &--title {
+            margin: 1.6rem 0 0.5rem;
+        }
+
+        &--author {
+            margin: 0;
+        }
+
+        &--note {
+            white-space: pre-wrap;
+        }
     }
 }

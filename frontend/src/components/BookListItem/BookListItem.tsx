@@ -9,17 +9,25 @@ const BookListItem = ({
     genre,
 }: BookData) => {
     return (
-        <div className={`${styles["book-list-item"]}`}>
+        <li className={`${styles["book-list-item"]}`}>
             <div className={`${styles["book-list-item__cover"]}`}>
                 <img src={cover} />
             </div>
             <div className={`${styles["book-list-item__text"]}`}>
-                <h2>{title}</h2>
-                <p>{author}</p>
-                <p>{description}</p>
-                <p>{genre}</p>
+                <h2 className={`${styles["book-list-item__text--title"]}`}>
+                    {title}
+                </h2>
+                <p className={`${styles["book-list-item__text--author"]}`}>
+                    {author}
+                </p>
+                <p className={`${styles["book-list-item__text--note"]}`}>
+                    {description}
+                </p>
+                <p className={`${styles["book-list-item__text--genre"]}`}>
+                    Genre: {genre}
+                </p>
             </div>
-        </div>
+        </li>
     );
 };
 
