@@ -1,7 +1,7 @@
 .book-list-item {
-    background-color: rgb(9, 17, 36);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 1.4rem;
+    background-color: #15212d;
+    border: 1px solid #374f66;
+    border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.6) 0px 3px 8px;
     display: flex;
     flex-direction: row;
@@ -27,10 +27,12 @@
         padding-right: 10rem;
 
         &--title {
+            color: #fff;
             margin: 1.6rem 0 0.5rem;
         }
 
         &--author {
+            color: #fff;
             margin: 0;
         }
 

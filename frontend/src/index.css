@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kreon:wght@300..700&family=Lexend:wght@100..900&display=swap");
 
 :root {
     font-size: 10px;
 }
 
 body {
-    background-color: rgb(3, 6, 15);
-    font-family: "Lexend", sans-serif;
+    background: linear-gradient(#0c2032, #081420);
+    font-family: "Kreon", sans-serif;
     font-optical-sizing: auto;
     font-size: 1.4rem;
     line-height: 2.2rem;
@@ -19,6 +20,10 @@ main {
 
 p {
     color: rgb(155, 168, 199);
+}
+
+h1 {
+    font-size: 4rem;
 }
 
 h1,
