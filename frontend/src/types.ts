@@ -6,7 +6,7 @@ type BookInfo = {
         publisher?: string;
         publishedDate?: string;
         description?: string;
-        pageCount?: number;
+        pageCount?: string;
         categories?: string[];
         averageRating?: number;
         ratingsCount?: number;

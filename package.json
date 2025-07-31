@@ -2,6 +2,7 @@
     "name": "the-book-list",
     "version": "1.0.0",
     "main": "backend/server.js",
+    "type": "module",
     "scripts": {
         "dev": "nodemon backend/server.js"
     },

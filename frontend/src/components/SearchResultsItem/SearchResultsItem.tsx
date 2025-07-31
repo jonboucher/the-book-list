@@ -2,12 +2,12 @@ import styles from "./SearchResultItem.module.scss";
 
 type SearchResultItemProps = {
     title: string;
-    authors: string[];
-    publishedDate: string;
-    description: string;
-    pageCount: string;
-    categories: string[];
-    cover: string;
+    authors?: string[];
+    publishedDate?: string;
+    description?: string;
+    pageCount?: string;
+    categories?: string[];
+    cover?: string;
 };
 
 const SearchResultsItem = ({
@@ -28,7 +28,7 @@ const SearchResultsItem = ({
                 <h2 className={`${styles["search-results-item__info--title"]}`}>
                     {title}
                 </h2>
-                <p>{authors[0]}</p>
+                <p>{authors && authors[0]}</p>
                 <p>{description}</p>
             </div>
         </div>
