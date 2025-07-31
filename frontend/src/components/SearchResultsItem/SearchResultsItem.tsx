@@ -29,7 +29,11 @@ const SearchResultsItem = ({
                     {title}
                 </h2>
                 <p>{authors && authors[0]}</p>
-                <p>{description}</p>
+                <p
+                    className={`${styles["search-results-item__info--description"]}`}
+                >
+                    {description}
+                </p>
             </div>
         </div>
     );
