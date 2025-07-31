@@ -5,12 +5,17 @@
     font-size: 10px;
 }
 
+html,
 body {
     background: linear-gradient(#0c2032, #081420);
+    background-repeat: no-repeat;
+    color: rgb(155, 168, 199);
     font-family: "Kreon", sans-serif;
     font-optical-sizing: auto;
     font-size: 1.4rem;
+    height: 100%;
     line-height: 2.2rem;
+    margin: 0;
 }
 
 main {

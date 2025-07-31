@@ -14,6 +14,7 @@ app.use(cors());
 
 const searchBooks = async (req, res) => {
     const searchTerms = req.query.search;
+    // const searchTerms = "vector prime";
     try {
         const response = await axios.get(
             `https://www.googleapis.com/books/v1/volumes?q=${searchTerms}&key=${API_KEY}`
