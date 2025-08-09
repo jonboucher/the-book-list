@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
+import { initDB } from "./config/db.js";
 
 dotenv.config();
 
@@ -29,6 +30,8 @@ const searchBooks = async (req, res) => {
 
 app.get("/search-books", searchBooks);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+initDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
 });
