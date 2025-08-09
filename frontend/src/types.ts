@@ -48,3 +48,9 @@ export type BookListData = {
     description: string;
     books: GoogleBooksResponse;
 };
+
+export type User = {
+    id: number;
+    username: string;
+    userLists: BookListData[];
+};
