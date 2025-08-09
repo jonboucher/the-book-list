@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import type { User, BookListData } from "../types";
 import { bookData } from "../../../backend/data/mockBookList";
+import MiniBookList from "../components/MiniBookList/MiniBookList";
 
 const UserHomePage = () => {
     const [user, setUser] = useState<User>();
@@ -12,7 +13,6 @@ const UserHomePage = () => {
         if (stored) {
             data = JSON.parse(stored)[0] as User;
         } else {
-            console.log("best");
             data = {
                 id: 1,
                 username: "Mozenrath",
@@ -30,7 +30,17 @@ const UserHomePage = () => {
             <div>
                 <h1>{user?.username}</h1>
                 <hr />
-                <div></div>
+                <div>
+                    {user?.userLists.map((list, index) => {
+                        return (
+                            <MiniBookList
+                                key={index}
+                                title={list.title}
+                                books={list.books}
+                            />
+                        );
+                    })}
+                </div>
             </div>
         </>
     );

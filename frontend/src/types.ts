@@ -45,7 +45,7 @@ export type GoogleBooksResponse = {
 
 export type BookListData = {
     title: string;
-    description: string;
+    description?: string;
     books: GoogleBooksResponse;
 };
 
