@@ -1,42 +1,27 @@
 import BookListItem from "../BookListItem/BookListItem";
+import type { GoogleBook } from "../../types";
 import styles from "./BookList.module.scss";
 
-export type BookData = {
-    id: number;
-    title: string;
-    author: string;
-    cover: string;
-    description: string;
-    genre: string;
-};
-
 type BookListProps = {
-    books: BookData[];
+    title: string;
+    description: string;
+    books: GoogleBook[];
 };
 
-const BookList = ({ books }: BookListProps) => {
+const BookList = ({ title, description, books }: BookListProps) => {
     return (
         <>
-            <h1 style={{ marginTop: "12rem" }}>Malazan: Book of the Fallen</h1>
-            <p style={{ color: "white" }}>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit,
-            </p>
+            <h1 style={{ marginTop: "12rem" }}>{title} </h1>
+            <p style={{ color: "white" }}>{description}</p>
             <ul className={`${styles["book-list"]}`}>
                 {books &&
                     books.map((book) => {
                         return (
                             <BookListItem
-                                id={book.id}
-                                key={book.id}
-                                title={book.title}
-                                author={book.author}
-                                description={book.description}
-                                cover={book.cover}
-                                genre={book.genre}
+                                title={book.volumeInfo.title}
+                                author={book.volumeInfo.authors}
+                                description={book.volumeInfo.description}
+                                cover={book.volumeInfo.imageLinks?.thumbnail}
                             />
                         );
                     })}
