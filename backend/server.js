@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
-import { initDB } from "./config/db.js";
 
 dotenv.config();
 
@@ -15,7 +14,6 @@ app.use(cors());
 
 const searchBooks = async (req, res) => {
     const searchTerms = req.query.search;
-    // const searchTerms = "vector prime";
     try {
         const response = await axios.get(
             `https://www.googleapis.com/books/v1/volumes?q=${searchTerms}&key=${API_KEY}`
@@ -30,8 +28,6 @@ const searchBooks = async (req, res) => {
 
 app.get("/search-books", searchBooks);
 
-initDB().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
