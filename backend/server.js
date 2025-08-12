@@ -5,6 +5,7 @@ import axios from "axios";
 
 import listRoutes from "./routes/listRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.get("/search-books", searchBooks);
 
 app.use("/api/lists", listRoutes);
 app.use("/api/books", bookRoutes);
+app.use("/api/users", userRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
