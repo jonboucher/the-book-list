@@ -26,6 +26,9 @@ CREATE TABLE IF NOT EXISTS books (
     updated_at TIMESTAMPTZ DEFAULT now()
 );
 
+CREATE UNIQUE INDEX uniq_books_isbn13 ON books(isbn_13) WHERE isbn_13 IS NOT NULL;
+-- CREATE UNIQUE INDEX uniq_books_isbn10 ON books(isbn_10) WHERE isbn_10 IS NOT NULL;
+
 CREATE TABLE IF NOT EXISTS book_lists (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,

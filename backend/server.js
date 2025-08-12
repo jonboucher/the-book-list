@@ -3,6 +3,9 @@ import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
 
+import listRoutes from "./routes/listRoutes.js";
+import bookRoutes from "./routes/bookRoutes.js";
+
 dotenv.config();
 
 const app = express();
@@ -27,6 +30,9 @@ const searchBooks = async (req, res) => {
 };
 
 app.get("/search-books", searchBooks);
+
+app.use("/api/lists", listRoutes);
+app.use("/api/books", bookRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

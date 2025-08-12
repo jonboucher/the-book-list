@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import type { User, BookListData } from "../types";
 import { bookData } from "../../../backend/data/mockBookList";
 import MiniBookList from "../components/MiniBookList/MiniBookList";
+import ListModal from "../components/ListModal/ListModal";
 
 const UserHomePage = () => {
     const [user, setUser] = useState<User>();
@@ -41,6 +42,7 @@ const UserHomePage = () => {
                         );
                     })}
                 </div>
+                <ListModal />
             </div>
         </>
     );
