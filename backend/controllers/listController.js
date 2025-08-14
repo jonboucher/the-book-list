@@ -33,6 +33,24 @@ export const createList = async (req, res) => {
     }
 };
 
+export const getBook = async (req, res) => {
+    const { bookId } = req.body;
+
+    try {
+        const book = await sql`
+            SELECT * FROM books 
+            WHERE id=${bookId}
+        `;
+        res.status(201).json({ success: true, data: book[0] });
+    } catch (err) {
+        console.log("Error in getBook function", err);
+        res.status(500).json({
+            success: false,
+            message: "Internal server error",
+        });
+    }
+};
+
 export const createBook = async (req, res) => {
     const {
         isbn_13,
@@ -88,6 +106,41 @@ export const createBook = async (req, res) => {
         res.status(201).json({ success: true, message: newBook[0] });
     } catch (err) {
         console.log("Error in createBook function", err);
+        res.status(500).json({
+            success: false,
+            message: "Internal server error",
+        });
+    }
+};
+
+export const addBookToList = async (req, res) => {
+    const { listId, bookId } = req.body;
+
+    try {
+        const updatedList = await sql`
+            INSERT INTO list_books (list_id, book_id)
+            VALUES (${listId}, ${bookId})
+            RETURNING *
+        `;
+        res.status(201).json({ success: true, data: updatedList[0] });
+    } catch (err) {
+        console.log("Error in addBookToList function", err);
+
+        if (err.code === "23503") {
+            // foreign_key_violation
+            return res.status(400).json({
+                success: false,
+                message: "List ID or Book ID does not exist",
+            });
+        }
+
+        if (err.code === "23505") {
+            // unique_violation
+            return res.status(409).json({
+                success: false,
+                message: "This book is already in the list",
+            });
+        }
         res.status(500).json({
             success: false,
             message: "Internal server error",

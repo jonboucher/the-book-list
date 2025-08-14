@@ -1,8 +1,9 @@
 import express from "express";
-import { createList } from "../controllers/listController.js";
+import { createList, addBookToList } from "../controllers/listController.js";
 
 const router = express.Router();
 
 router.post("/", createList);
+router.post("/addBook/:listId", addBookToList);
 
 export default router;
