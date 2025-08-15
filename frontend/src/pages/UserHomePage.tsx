@@ -5,25 +5,28 @@ import MiniBookList from "../components/MiniBookList/MiniBookList";
 import ListModal from "../components/ListModal/ListModal";
 
 const UserHomePage = () => {
+    const userId = "ab6fbf9b-d204-4a7c-be97-e96cc185564c";
+
     const [user, setUser] = useState<User>();
 
     useEffect(() => {
-        const stored = localStorage.getItem("users");
-        let data;
+        const fetchUserData = async () => {
+            const res = await fetch(
+                `http://localhost:3000/api/users/${userId}`
+            );
+            const data = await res.json();
+            console.log(data);
 
-        if (stored) {
-            data = JSON.parse(stored)[0] as User;
-        } else {
-            data = {
-                id: 1,
-                username: "Mozenrath",
-                userLists: [bookData],
+            const currentUser: User = {
+                id: data.data.id,
+                username: data.data.username,
+                userLists: [],
             };
 
-            localStorage.setItem("users", JSON.stringify([data]));
-        }
+            setUser(currentUser);
+        };
 
-        setUser(data);
+        fetchUserData();
     }, []);
 
     return (
@@ -31,7 +34,7 @@ const UserHomePage = () => {
             <div>
                 <h1>{user?.username}</h1>
                 <hr />
-                <div>
+                {/* <div>
                     {user?.userLists.map((list, index) => {
                         return (
                             <MiniBookList
@@ -42,7 +45,7 @@ const UserHomePage = () => {
                         );
                     })}
                 </div>
-                <ListModal />
+                <ListModal /> */}
             </div>
         </>
     );

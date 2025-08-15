@@ -8,6 +8,24 @@ const { DATABASE_URL } = process.env;
 
 const sql = neon(DATABASE_URL);
 
+export const getUser = async (req, res) => {
+    const { id } = req.params;
+    console.log(id);
+    try {
+        const user = await sql`
+            SELECT * FROM users
+            WHERE id=${id}
+        `;
+        res.status(201).json({ success: true, data: user[0] });
+    } catch (err) {
+        console.log("Error in getUser function", err);
+        res.status(500).json({
+            success: false,
+            message: "Internal server error",
+        });
+    }
+};
+
 export const createUser = async (req, res) => {
     const { username, email, password } = req.body;
 
