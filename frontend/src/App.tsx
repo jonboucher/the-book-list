@@ -7,6 +7,7 @@ import BookListPage from './pages/BookListPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import UserHomePage from './pages/UserHomePage';
 import EditListPage from './pages/EditListPage';
+import ListModal from './components/ListModal/ListModal';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path='/list/:id/edit' element={<EditListPage />} />
             </Routes>
           </Router>
+          <ListModal />
         </main>
       </BookSearchProvider>
     </UserProvider>
