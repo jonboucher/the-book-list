@@ -7,7 +7,7 @@ const MiniBookList = ({ title, description, books }: BookListData) => {
     <div>
       <h2>{title}</h2>
       <div>
-        {books.map((item, index) => {
+        {books?.map((item, index) => {
           return <MiniBookListItem key={index} order={index + 1} title={item.title} />;
         })}
       </div>

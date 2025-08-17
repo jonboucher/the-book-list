@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import BookListPage from './pages/BookListPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import UserHomePage from './pages/UserHomePage';
+import EditListPage from './pages/EditListPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path='/search' element={<SearchResultsPage />} />
               <Route path='/user/:id' element={<UserHomePage />} />
               <Route path='/list/:id' element={<BookListPage />} />
+              <Route path='/list/:id/edit' element={<EditListPage />} />
             </Routes>
           </Router>
         </main>

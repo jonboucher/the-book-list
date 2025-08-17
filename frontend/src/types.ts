@@ -53,7 +53,7 @@ export type UserBook = {
 export type BookListData = {
   title: string;
   description?: string;
-  books: UserBook[];
+  books?: UserBook[];
 };
 
 export type User = {

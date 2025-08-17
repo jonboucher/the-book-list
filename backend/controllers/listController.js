@@ -162,7 +162,7 @@ export const createBook = async (req, res) => {
             ${raw_json})
         RETURNING *
         `;
-    res.status(201).json({ success: true, message: newBook[0] });
+    res.status(201).json({ success: true, data: newBook[0] });
   } catch (err) {
     console.log('Error in createBook function', err);
     res.status(500).json({

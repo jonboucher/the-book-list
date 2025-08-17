@@ -19,7 +19,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       const { data } = await axios.get(`http://localhost:3000/api/users/${userId}`);
       const listsRes = await axios.get(`http://localhost:3000/api/lists/user/${userId}`);
       const lists = await listsRes.data;
-        console.log(lists);
       const currentUser: User = {
         id: data.data.id,
         username: data.data.username,

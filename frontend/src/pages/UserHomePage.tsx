@@ -1,13 +1,11 @@
 import { useUser } from '../context/UserContext';
 
-import { bookData } from '../../../backend/data/mockBookList';
 import MiniBookList from '../components/MiniBookList/MiniBookList';
 import ListModal from '../components/ListModal/ListModal';
 
 const UserHomePage = () => {
   const { user } = useUser();
 
-  console.log(user);
   return (
     <>
       <div>
