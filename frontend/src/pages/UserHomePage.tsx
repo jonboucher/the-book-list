@@ -1,22 +1,15 @@
 import { useUser } from '../context/UserContext';
-
-import MiniBookList from '../components/MiniBookList/MiniBookList';
-import ListModal from '../components/ListModal/ListModal';
+import UserHeader from '../components/UserHeader/UserHeader';
+import MiniBookListContainer from '../components/MiniBookList/MiniBookListContainer';
 
 const UserHomePage = () => {
   const { user } = useUser();
 
   return (
     <>
-      <div>
-        <h1>{user?.username}</h1>
-        <hr />
-        <div>
-          {user?.userLists?.map((list, index) => {
-            return <MiniBookList key={index} title={list.title} books={list.books} />;
-          })}
-        </div>
-        <ListModal />
+      <div className='user-home-page'>
+        <UserHeader />
+        <MiniBookListContainer lists={user?.userLists || []} />
       </div>
     </>
   );
