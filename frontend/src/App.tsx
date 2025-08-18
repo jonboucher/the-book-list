@@ -9,6 +9,7 @@ import UserHomePage from './pages/UserHomePage';
 import EditListPage from './pages/EditListPage';
 import ListModal from './components/ListModal/ListModal';
 import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path='/list/:id' element={<BookListPage />} />
               <Route path='/list/:id/edit' element={<EditListPage />} />
               <Route path='/login' element={<LoginPage />} />
+              <Route path='/sign-up' element={<SignUpPage />} />
             </Routes>
           </Router>
           <ListModal />

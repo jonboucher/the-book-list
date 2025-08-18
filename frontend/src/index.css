@@ -44,7 +44,7 @@ h3 {
 }
 
 .login-page {
-  background: url('../public/images/login-bg.jpg');
+  background: url('/images/login-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   bottom: 0;
