@@ -1,12 +1,50 @@
 import { neon } from '@neondatabase/serverless';
 import dotenv from 'dotenv';
-import argon2 from 'argon2';
+import argon2, { argon2i } from 'argon2';
+import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
 const { DATABASE_URL } = process.env;
+const { JWT_SECRET } = process.env;
 
 const sql = neon(DATABASE_URL);
+
+export const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ success: false, message: 'Email and password are required' });
+  }
+
+  try {
+    const user = await sql`
+            SELECT * FROM users WHERE email = ${email}
+        `;
+
+    if (user.length === 0) {
+      return res.status(401).json({ success: false, message: 'Invalid email' });
+    }
+
+    const validPassword = await argon2.verify(user[0].password_hash, password);
+
+    if (!validPassword) {
+      return res.status(401).json({ success: false, message: 'Invalid password' });
+    }
+
+    const token = jwt.sign({ id: user[0].id }, JWT_SECRET, { expiresIn: '2h' });
+
+    res
+      .status(200)
+      .json({ success: true, token, user: { id: user[0].id, username: user[0].username, email: user[0].email } });
+  } catch (err) {
+    console.log('Error in loginUser function', err);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error',
+    });
+  }
+};
 
 export const getUser = async (req, res) => {
   const { id } = req.params;
