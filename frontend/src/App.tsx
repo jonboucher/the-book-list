@@ -8,6 +8,7 @@ import SearchResultsPage from './pages/SearchResultsPage';
 import UserHomePage from './pages/UserHomePage';
 import EditListPage from './pages/EditListPage';
 import ListModal from './components/ListModal/ListModal';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path='/user/:id' element={<UserHomePage />} />
               <Route path='/list/:id' element={<BookListPage />} />
               <Route path='/list/:id/edit' element={<EditListPage />} />
+              <Route path='/login' element={<LoginPage />} />
             </Routes>
           </Router>
           <ListModal />
