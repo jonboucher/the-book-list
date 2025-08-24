@@ -6,6 +6,8 @@ import axios from "axios";
 import listRoutes from "./routes/listRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import cookieParser from "cookie-parser";
+import { authenticateToken } from "./middleware/authenticateToken.js";
 
 dotenv.config();
 
@@ -14,7 +16,13 @@ const PORT = process.env.PORT || 3000;
 const API_KEY = process.env.API_KEY;
 
 app.use(express.json());
-app.use(cors());
+app.use(
+    cors({
+        origin: "http://localhost:5173",
+        credentials: true,
+    })
+);
+app.use(cookieParser());
 
 const searchBooks = async (req, res) => {
     const searchTerms = req.query.search;
